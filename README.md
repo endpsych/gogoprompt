@@ -1,8 +1,11 @@
-# GoGoPrompt
+# GoGoPrompt `Beta`
 
 **A professional-grade prompt management utility built with Electron, React, and TypeScript.**
 
+**Current Status:** GoGoPrompt is currently in **Beta**. We are actively refining the automation pipeline and cross-platform stability. Your feedback is invaluable for helping us move toward a 1.0 release.
+
 GoGoPrompt is a high-performance productivity tool designed to bridge the gap between your prompt library and your workflow. It allows you to summon your data instantly via a global hotkey and deploy content using a sophisticated 4-stage automation pipeline.
+
 
 ---
 

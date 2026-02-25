@@ -5,7 +5,7 @@
   "main": "electron/main.js",
   "type": "commonjs",
   "author": "Ender De Freitas",
-  "description": "A quick-access prompt manager",
+  "description": "A quick-access AI prompt manager (beta)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
