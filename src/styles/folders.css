@@ -1,0 +1,352 @@
+/* Folder List Styles */
+
+.folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.folder-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  position: relative;
+}
+
+.folder-item:hover {
+  background: var(--hover);
+}
+
+.folder-item.active {
+  background: var(--selection);
+}
+
+.folder-item.dragging {
+  opacity: 0.5;
+}
+
+.folder-item.drag-over {
+  background: var(--primary-light);
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.folder-item-wrapper {
+  position: relative;
+}
+
+.folder-drag-handle {
+  opacity: 0;
+  cursor: grab;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  margin-left: -4px;
+}
+
+.folder-item:hover .folder-drag-handle {
+  opacity: 0.5;
+}
+
+.folder-drag-handle:hover {
+  opacity: 1 !important;
+  color: var(--text-secondary);
+}
+
+.folder-drag-handle:active {
+  cursor: grabbing;
+}
+
+.folder-expand-btn {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.folder-expand-btn:hover {
+  background: var(--hover);
+  color: var(--text-secondary);
+}
+
+.folder-icon {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.folder-name {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--surface);
+  padding: 1px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.folder-menu-btn {
+  opacity: 0;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--text-muted);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.folder-item:hover .folder-menu-btn {
+  opacity: 1;
+}
+
+.folder-menu-btn:hover,
+.folder-menu-btn.active {
+  background: var(--hover);
+  color: var(--text-primary);
+}
+
+.folder-menu {
+  position: absolute;
+  top: 100%;
+  right: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 140px;
+  padding: 4px;
+}
+
+.folder-menu button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-primary);
+  border-radius: 4px;
+  text-align: left;
+}
+
+.folder-menu button:hover {
+  background: var(--hover);
+}
+
+.folder-menu button.danger {
+  color: var(--error);
+}
+
+.folder-menu button.danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.folder-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+}
+
+.folder-separator {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 8px;
+}
+
+.folder-edit-input {
+  flex: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 13px;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.folder-edit-input:focus {
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Folder prompts preview */
+.folder-prompts {
+  padding-left: 28px;
+  margin-top: 2px;
+}
+
+.folder-prompt-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  border-radius: 3px;
+}
+
+.folder-prompt-item:hover {
+  background: var(--hover);
+  color: var(--text-secondary);
+}
+
+.folder-prompt-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder-prompt-more {
+  padding: 3px 8px;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Create folder form */
+.folder-create-form {
+  padding: 8px;
+  background: var(--surface);
+  border-radius: 6px;
+  margin: 4px 4px 0;
+}
+
+.folder-create-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.folder-color-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.folder-color-btn:hover {
+  border-color: var(--text-muted);
+}
+
+.folder-name-input {
+  flex: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 13px;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.folder-name-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.folder-create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.folder-cancel-btn {
+  background: none;
+  border: none;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.folder-cancel-btn:hover {
+  background: var(--hover);
+  color: var(--text-primary);
+}
+
+.folder-save-btn {
+  background: var(--primary);
+  border: none;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.folder-save-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.folder-save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Add folder button */
+.folder-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-muted);
+  width: 100%;
+  text-align: left;
+  margin-top: 4px;
+}
+
+.folder-add-btn:hover {
+  background: var(--hover);
+  color: var(--primary);
+}
+
+/* Prompt item folder indicator */
+.prompt-item-folder {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 2px 6px;
+  background: var(--surface);
+  border-radius: 3px;
+  margin-left: auto;
+}
+
+.prompt-item-folder svg {
+  flex-shrink: 0;
+}

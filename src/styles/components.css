@@ -1,0 +1,332 @@
+/* =============================================================================
+   Component List Container
+   ============================================================================= */
+
+.component-list-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.component-list-header {
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.component-type-filter {
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.component-type-btn {
+  background: var(--color-bg-secondary);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 2px var(--spacing-sm);
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.component-type-btn:hover {
+  border-color: var(--type-color, #6b7280);
+  color: white;
+}
+
+.component-type-btn.active {
+  background: var(--type-color, #6b7280);
+  color: white;
+}
+
+/* =============================================================================
+   Component List Items
+   ============================================================================= */
+
+.component-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xs);
+}
+
+.component-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-normal);
+}
+
+.component-item:hover {
+  color: #e4e4e7;
+}
+
+.component-item.active {
+  background: var(--color-bg-secondary);
+  color: white;
+}
+
+/* Drag handle */
+.component-item .drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-disabled);
+  cursor: grab;
+  padding: 2px;
+  margin-left: -4px;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.component-item:hover .drag-handle {
+  opacity: 1;
+}
+
+.component-item .drag-handle:hover {
+  color: var(--color-text-secondary);
+}
+
+.component-item .drag-handle:active {
+  cursor: grabbing;
+}
+
+/* Dragging state */
+.component-item.dragging {
+  opacity: 0.4;
+  background: var(--color-bg-tertiary);
+}
+
+/* Drop indicator */
+.component-item.drag-over {
+  position: relative;
+}
+
+.component-item.drag-over::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 1px;
+  z-index: 10;
+}
+
+.component-item.drag-over-before::before {
+  top: -1px;
+}
+
+.component-item.drag-over-after::before {
+  bottom: -1px;
+}
+
+.component-type-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.component-item-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-list-empty {
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-text-disabled);
+  font-size: 12px;
+}
+
+/* =============================================================================
+   Component Editor
+   ============================================================================= */
+
+.component-header-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  overflow: hidden;
+}
+
+.component-type-badge {
+  padding: 2px var(--spacing-sm);
+  border-radius: 12px;
+  font-size: 10px;
+  color: white;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.component-type-selector {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  background: #1f1f23;
+}
+
+.component-type-option {
+  background: var(--color-bg-secondary);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: var(--spacing-xs) 10px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.component-type-option:hover {
+  border-color: var(--type-color, #6b7280);
+  color: white;
+}
+
+.component-type-option.active {
+  background: var(--type-color, #6b7280);
+  color: white;
+  border-color: transparent;
+}
+
+/* =============================================================================
+   Component Picker Modal
+   ============================================================================= */
+
+.component-picker-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+}
+
+.component-picker {
+  width: 500px;
+  max-width: 90vw;
+  max-height: 70vh;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.component-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.component-picker-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.component-picker-close {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+}
+
+.component-picker-close:hover {
+  background: var(--color-bg-tertiary);
+  color: white;
+}
+
+.component-picker-search {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.component-picker-search input {
+  width: 100%;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: white;
+  font-size: 13px;
+  outline: none;
+}
+
+.component-picker-search input:focus {
+  border-color: var(--color-accent);
+}
+
+.component-picker-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-sm);
+}
+
+.component-picker-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.component-picker-item:hover {
+  background: var(--color-bg-secondary);
+}
+
+.component-picker-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.component-picker-item-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.component-picker-item-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+
+.component-picker-item-preview {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-picker-empty {
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--color-text-disabled);
+  font-size: 13px;
+}

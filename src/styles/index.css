@@ -1,0 +1,54 @@
+/* =============================================================================
+   GoGoPrompt App - Main Stylesheet
+   =============================================================================
+   
+   This file imports all CSS modules in the correct order.
+   Each module is self-contained and focuses on a specific feature/component.
+   
+   Module Organization:
+   - base.css         : CSS variables, reset, scrollbars
+   - layout.css       : Title bar, main content layout
+   - sidebar.css      : Sidebar container, tabs, resize handle
+   - tags.css         : Tag filter, tag stats, tag input, color picker
+   - editor.css       : Prompt list, editor panel, editor body
+   - components.css   : Component list, editor, picker
+   - glossary.css     : Glossary list, editor, picker
+   - modals.css       : Settings, dialogs, variable filler
+   - deck-mode.css    : Deck mode UI (Renamed from mini-mode)
+   - toast.css        : Toast notifications
+   - extras.css       : Version history, highlighting, shortcuts, backup
+   
+   ============================================================================= */
+
+/* Base styles and CSS variables - must be first */
+@import './base.css';
+
+/* Layout components */
+@import './layout.css';
+@import './sidebar.css';
+
+/* Feature-specific styles */
+@import './tags.css';
+@import './folders.css';
+@import './editor.css';
+@import './components.css';
+@import './glossary.css';
+
+/* Modal and overlay styles */
+@import './modals.css';
+@import './templates.css';
+
+/* Deck mode */
+@import './deck-mode.css';
+
+/* Notifications */
+@import './toast.css';
+
+/* Loading states */
+@import './loading.css';
+
+/* Error boundaries */
+@import './error-boundary.css';
+
+/* Additional features (version history, highlighting, shortcuts, backup) */
+@import './extras.css';

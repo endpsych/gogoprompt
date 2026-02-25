@@ -1,0 +1,251 @@
+/* =============================================================================
+   GoGoPrompt App - Main Stylesheet
+   ============================================================================= */
+
+/* Base styles and CSS variables - must be first */
+@import './base.css';
+
+/* Layout components */
+@import './layout.css';
+@import './sidebar.css';
+
+/* Feature-specific styles */
+@import './tags.css';
+@import './folders.css';
+@import './editor.css';
+@import './components.css';
+@import './glossary.css';
+
+/* Modal and overlay styles */
+@import './modals.css';
+@import './templates.css';
+
+/* Deck mode */
+@import './deck-mode.css';
+
+/* Notifications */
+@import './toast.css';
+
+/* Loading states */
+@import './loading.css';
+
+/* Error boundaries */
+@import './error-boundary.css';
+
+/* Additional features */
+@import './extras.css';
+
+
+/* =============================================================================
+   DEPLOYMENT HISTORY OVERRIDES
+   ============================================================================= */
+
+/* 1. Toolbar & Search Bar */
+.history-modal-toolbar {
+  padding: 12px 20px;
+  border-bottom: 1px solid #3f3f46;
+  display: flex;
+  gap: 12px;
+  background-color: #18181b;
+  align-items: center;
+}
+
+/* NOTE: specific search bar styling is handled inline in HistoryPanel.tsx 
+   to override browser defaults, but we keep these for structural fallback */
+.history-search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 6px; 
+  padding: 0 10px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.history-search-bar .search-icon { color: #71717a; width: 14px; height: 14px; flex-shrink: 0; }
+
+.history-search-bar .search-clear {
+  background: none; border: none; color: #71717a; cursor: pointer;
+  display: flex; align-items: center; padding: 2px;
+  border-radius: 4px;
+}
+.history-search-bar .search-clear:hover { color: white; background-color: rgba(255,255,255,0.1); }
+
+.history-clear-all-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.history-clear-all-btn:hover { background: rgba(239, 68, 68, 0.2); }
+
+
+/* 2. History Item Cards - UPDATED FOR VISUAL SEPARATION */
+
+.history-group { 
+  margin-bottom: 24px; 
+}
+
+.history-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a1a1aa; /* Zinc-400 */
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-left: 4px;
+  letter-spacing: 0.05em;
+}
+
+.history-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Adds space between the cards */
+}
+
+/* The Card Container */
+.history-card {
+  /* Box Model */
+  background-color: #27272a !important; /* Zinc-900 (Distinct from modal bg) */
+  border: 1px solid #3f3f46 !important; /* Zinc-700 */
+  border-radius: 8px !important;
+  padding: 16px !important;
+  
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  
+  /* Interaction */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-card:hover {
+  border-color: #52525b !important; /* Lighten border on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle lift */
+}
+
+/* Card Header */
+.history-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Separator line */
+  margin-bottom: 4px;
+}
+
+.history-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f4f4f5;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.history-card-title-group .mode-icon { 
+  color: #818cf8; /* Indigo accent */
+}
+
+.history-card-title-text {
+  /* Ensure long titles don't break layout */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px; 
+}
+
+.history-time {
+  font-family: monospace;
+  font-size: 11px;
+  color: #71717a;
+}
+
+/* Card Body */
+.history-card-body {
+  font-size: 13px;
+  color: #d4d4d8;
+}
+
+/* Text Preview Box (Snippet) */
+.history-content-preview {
+  background-color: #18181b; /* Darker than card */
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #a1a1aa;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Chips/Variables */
+.history-chips-container { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 8px; 
+}
+
+.history-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  color: #c7d2fe;
+}
+
+.history-chip.addon, .history-chip.instruction { 
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3); color: #d1fae5;
+}
+
+.chip-key { font-weight: 700; opacity: 0.7; text-transform: uppercase; font-size: 10px; }
+.chip-arrow { opacity: 0.5; }
+.chip-val { font-weight: 500; color: white; }
+
+
+/* 3. Footer Buttons (Handled inline in HistoryItem.tsx, but basic layout here) */
+.history-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+/* 4. Empty State */
+.history-modal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #71717a;
+  text-align: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.empty-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #27272a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}

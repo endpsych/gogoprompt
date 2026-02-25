@@ -1,0 +1,288 @@
+/* =============================================================================
+   Sidebar Container
+   ============================================================================= */
+
+.sidebar {
+  width: 280px;
+  min-width: 200px;
+  max-width: 500px;
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-primary);
+  flex-shrink: 0;
+  transition: width var(--transition-normal);
+  overflow: hidden;
+}
+
+.sidebar.resizing {
+  pointer-events: none;
+  transition: none;
+}
+
+.sidebar.collapsed {
+  width: 0 !important;
+  min-width: 0;
+  border-right: none;
+}
+
+/* =============================================================================
+   Sidebar Edge (Resize Handle & Collapse Button)
+   ============================================================================= */
+
+.sidebar-edge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  background: var(--color-bg-primary);
+  border-right: 1px solid var(--color-border);
+}
+
+.sidebar-resize-handle {
+  width: 4px;
+  flex: 1;
+  cursor: col-resize;
+  background: transparent;
+  transition: background var(--transition-normal);
+  position: relative;
+}
+
+.sidebar-resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  right: -2px;
+  bottom: 0;
+}
+
+.sidebar-resize-handle:hover,
+.sidebar-resize-handle.active {
+  background: var(--color-accent-hover);
+}
+
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 32px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin: var(--spacing-xs) 0;
+}
+
+.sidebar-collapse-btn:hover {
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+/* =============================================================================
+   Sidebar Header
+   ============================================================================= */
+
+.sidebar-header {
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.sidebar-header-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.new-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 6px var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background var(--transition-normal);
+}
+
+.new-btn:hover {
+  background: #4338ca;
+}
+
+.templates-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  padding: 6px var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.templates-btn.icon-only {
+  flex: 0;
+  padding: 6px 10px;
+}
+
+.templates-btn:hover {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+}
+
+.search-input {
+  width: 100%;
+  background: var(--color-bg-secondary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 12px;
+  color: white;
+  outline: none;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 1px var(--color-accent-hover);
+}
+
+/* =============================================================================
+   Sidebar Tabs
+   ============================================================================= */
+
+.sidebar-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.sidebar-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border-bottom: 2px solid transparent;
+}
+
+.sidebar-tab:hover {
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+}
+
+.sidebar-tab.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ========================================================== */
+/* RTL (Right-to-Left) Layout Overrides - Sidebar Specific */
+/* ========================================================== */
+
+/* 1. Global Text Alignment and Flow (Repeated for safety, though better placed in a global file) */
+[dir="rtl"] {
+    text-align: right;
+    direction: rtl; 
+}
+
+/* 3. Sidebar Positioning and Resizing */
+[dir="rtl"] .sidebar {
+    /* Flips the border and padding */
+    border-right: none;
+    border-left: 1px solid var(--color-border);
+    padding-left: 8px; 
+    padding-right: 0;
+}
+[dir="rtl"] .sidebar.collapsed {
+    border-left: none;
+}
+
+
+/* 4. Sidebar Edge and Resize Handle Position */
+[dir="rtl"] .sidebar-edge {
+    /* Flips the attachment point from right to left of the editor */
+    border-right: none;
+    border-left: 1px solid var(--color-border);
+    right: 0; /* Ensures it stays to the far left of the main content */
+    left: auto;
+    /* Aligns the collapse button (if present here) */
+    justify-content: flex-start; 
+}
+
+/* 5. Sidebar Resize Handle */
+[dir="rtl"] .sidebar-resize-handle {
+    /* Moves the handle itself to the left of the edge, matching the RTL flow */
+    cursor: ew-resize;
+    right: auto;
+    left: -5px; 
+}
+
+/* 7. Icon/Text Spacing Reversal */
+/* Reverses margin that typically sits on the right of an icon/label in LTR */
+[dir="rtl"] .icon-before-text, 
+[dir="rtl"] button > svg + span,
+[dir="rtl"] button > span + svg {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* 8. Fix Search/Input Alignment */
+[dir="rtl"] .search-input {
+    text-align: right;
+}
+[dir="rtl"] .search-input::placeholder {
+    text-align: right;
+}
+
+/* 9. Header Button Group Alignment */
+[dir="rtl"] .sidebar-header {
+    flex-direction: row-reverse;
+}
+[dir="rtl"] .sidebar-header-buttons {
+    /* Reverses the order of the buttons (New Prompt, Templates) */
+    flex-direction: row-reverse;
+}
+
+/* 10. Individual Component/Prompt List Item Alignment */
+/* Adjusts padding for list items to start from the right */
+/* This is a guess based on standard list styles; check if this is necessary */
+/* [dir="rtl"] .prompt-list-item,
+[dir="rtl"] .component-list-item,
+[dir="rtl"] .glossary-list-item {
+    padding-left: 0;
+    padding-right: 12px;
+} */
+
+/* 11. Tab/Sidebar Button Alignment */
+/* Flips the order of the icon and text inside a tab button */
+[dir="rtl"] .sidebar-tab {
+    flex-direction: row-reverse;
+    text-align: right;
+    /* Flips the active border from bottom-left to bottom-right */
+    border-right: 2px solid transparent;
+    border-bottom-color: var(--color-accent);
+}
+[dir="rtl"] .sidebar-tab.active {
+    border-bottom-color: var(--color-accent);
+}

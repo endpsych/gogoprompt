@@ -1,0 +1,78 @@
+/* =============================================================================
+   Title Bar
+   ============================================================================= */
+
+.title-bar {
+  height: 40px;
+  background: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-md);
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.title-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.window-controls {
+  display: flex;
+  gap: var(--spacing-xs);
+  -webkit-app-region: no-drag;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:hover {
+  background: var(--color-bg-tertiary);
+  color: white;
+}
+
+.close-btn:hover {
+  background: var(--color-error);
+  color: white;
+}
+
+.settings-btn:hover {
+  color: var(--color-accent);
+}
+
+.mini-mode-btn:hover {
+  color: var(--color-warning);
+}
+
+/* =============================================================================
+   Main Content Layout
+   ============================================================================= */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.editor-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+}
